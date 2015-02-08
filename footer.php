@@ -13,6 +13,9 @@
 </div><!-- #page -->
 
 <footer id="colophon" role="contentinfo">
+	<div class="footer-menu">
+		<?php wp_nav_menu( array( 'theme_location' => 'footer' ) ); ?>
+	</div>
     <div id="copyright">
         <!-- copyright goes here -->
         &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?><br>
