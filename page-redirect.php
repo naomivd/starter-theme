@@ -2,7 +2,7 @@
 /**
  * Template Name: Redirect to First Child
  * 
- * @package themeHandle
+ * @package starter_deliciae
  */
 if ( have_posts() ) : 
 	while ( have_posts() ) : the_post();

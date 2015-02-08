@@ -4,7 +4,7 @@
  *
  * Sets up the theme and provides some helper functions.
  *
- * @package themeHandle
+ * @package starter_deliciae
  */
 
 
@@ -22,13 +22,13 @@ if ( ! function_exists( 'themeFunction_setup' ) ):
 function themeFunction_setup() {
 
 	// Available for translation
-	load_theme_textdomain( 'themeTextDomain', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'starter_deliciae', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to <head>.
 	add_theme_support( 'automatic-feed-links' );
 
 	// Add custom nav menu support
-	register_nav_menu( 'primary', __( 'Primary Menu', 'themeTextDomain' ) );
+	register_nav_menu( 'primary', __( 'Primary Menu', 'starter_deliciae' ) );
 	
 	// Add featured image support
 	add_theme_support( 'post-thumbnails' );
@@ -52,7 +52,7 @@ add_action( 'after_setup_theme', 'themeFunction_setup' );
  ========================== */
 function themeFunction_widgets_init() {
 	register_sidebar( array(
-		'name' => __( 'Sidebar', 'themeTextDomain' ),
+		'name' => __( 'Sidebar', 'starter_deliciae' ),
 		'id' => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",
@@ -93,7 +93,7 @@ show_admin_bar( false );
 //if( function_exists('acf_add_options_sub_page') )
 //{
 //    acf_add_options_sub_page(array(
-//        'title' => __( 'Site Options', 'themeTextDomain' ),
+//        'title' => __( 'Site Options', 'starter_deliciae' ),
 //        'parent' => 'options-general.php',
 //        'capability' => 'manage_options'
 //    ));

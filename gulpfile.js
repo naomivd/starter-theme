@@ -12,15 +12,14 @@ var gulp = require('gulp'),
 var imgSrc = 'assets/images/originals/*';
 var imgDest = 'assets/images';
     
-gulp.task('styles', function(){
-	return gulp.src('scss/style.scss', {base: 'scss'})
-	    .pipe(plumber())
-	    .pipe(sass({ style: 'expanded' }))
-	    .pipe(gulp.dest(''))
-	    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-	    .pipe(minifycss())
-	    .pipe(gulp.dest(''))
-	    .pipe(livereload(server));
+// gulp-ruby-sass: 1.x
+gulp.task('styles', function() {
+    return sass('scss', { style: 'expanded' })
+        .pipe(gulp.dest('scss'))
+        .pipe(plumber())
+        .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
+        .pipe(minifycss())
+        .pipe(gulp.dest(''))
 });
 
 gulp.task('images', function() {

@@ -12,11 +12,11 @@ I use [String Replacer](http://www.tensionsoftware.com/osx/stringreplacer/) (a M
 
 `themeName` > `Theme Name`
 
-`themeHandle` > `Theme_Name`
+`starter_deliciae` > `Theme_Name`
 
 `themeFunction` > `theme_name`
 
-`themeTextDomain` > `theme-name`
+`starter_deliciae` > `theme-name`
 
 There are additional variables in `scss/styles.scss` you'll want to update one at a time, and a few in `footer.php` as well.
 
