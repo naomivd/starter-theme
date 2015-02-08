@@ -261,6 +261,7 @@ body {
 #page {
   width: 1000px;
   padding: 0 15px;
+  margin: auto;
 }
 
 #main {
@@ -371,6 +372,25 @@ body {
 }
 #access ul li:last-of-type a:after {
   content: none;
+}
+
+/* Scroll to Top
+--------------------------------------------- */
+#scrollUp {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 13px;
+  right: 0;
+  bottom: 70px;
+  width: 40px;
+  height: 40px;
+  padding: 10px 5px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #000;
 }
 
 /* =CONTENT

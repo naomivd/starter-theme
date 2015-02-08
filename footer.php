@@ -11,7 +11,7 @@
 	</div><!-- #main -->
 
 </div><!-- #page -->
-<footer id="colophon" role="contentinfo">
+<footer id="colophon" itemtype="http://schema.org/WPFooter" itemscope="itemscope" role="contentinfo">
 	<div id="copyright">
 		&copy; <?php echo date('Y'); echo '&nbsp;'; echo bloginfo( 'name' ); ?><br>
 		Site by <a href="themeDesignerURI" target="_blank" rel="nofollow">themeDesigner</a> &amp; 

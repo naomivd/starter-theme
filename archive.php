@@ -10,7 +10,7 @@
 
 get_header(); ?>
 
-<section id="primary" role="main">
+<section id="primary" itemtype="http://schema.org/Blog" itemscope="itemscope" itemprop="mainContentOfPage" role="main">
 
 	<?php if ( have_posts() ) : ?>
 		
@@ -23,7 +23,7 @@ get_header(); ?>
 
 		<?php endwhile; ?>
 
-		<?php get_template_part( 'inc/pagination' ); ?>
+		<?php the_posts_navigation(); ?>
 
 	<?php else : ?>
 		

@@ -4,7 +4,7 @@
  *
  * The area of the page that contains both current comments
  * and the comment form. The actual display of comments is
- * handled by a callback to themeFunction_comment() which is
+ * handled by a callback to starter_deliciae_comment() which is
  * located in the functions.php file.
  *
  * @package starter_deliciae
@@ -30,9 +30,9 @@
 		<ol class="commentlist">
 			<?php
 				/* Loop through and list the comments. Tell wp_list_comments()
-				 * See themeFunction_comment() in inc/functions/comments.php for more.
+				 * See starter_deliciae_comment() in inc/functions/comments.php for more.
 				 */
-				wp_list_comments( array( 'callback' => 'themeFunction_comment' ) );
+				wp_list_comments( array( 'callback' => 'starter_deliciae_comment' ) );
 			?>
 		</ol>
 

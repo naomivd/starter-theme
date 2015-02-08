@@ -7,9 +7,9 @@
  * @package starter_deliciae
  */
 
-if ( ! function_exists( 'themeFunction_comment' ) ) :
+if ( ! function_exists( 'starter_deliciae_comment' ) ) :
 
-function themeFunction_comment( $comment, $args, $depth ) {
+function starter_deliciae_comment( $comment, $args, $depth ) {
 	$GLOBALS['comment'] = $comment;
 	switch ( $comment->comment_type ) :
 		case 'pingback' :
@@ -64,4 +64,4 @@ function themeFunction_comment( $comment, $args, $depth ) {
 			break;
 	endswitch;
 }
-endif; // ends check for themeFunction_comment()
+endif; // ends check for starter_deliciae_comment()

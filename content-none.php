@@ -6,9 +6,9 @@
  */
 ?>
 
-<article class="post no-results not-found">
+<article class="post no-results not-found" itemtype="http://schema.org/BlogPosting" itemscope="itemscope">
 	<header class="entry-header">
-		<h1 class="entry-title"><?php _e( 'Nothing Found', 'starter_deliciae' ); ?></h1>
+		<h2 class="entry-title"><?php _e( 'Nothing Found', 'starter_deliciae' ); ?></h2>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

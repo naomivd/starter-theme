@@ -1,22 +1,30 @@
 <?php
 /**
- * Single post template
+ * The template for displaying all single posts.
  *
- * @package starter_deliciae
+ * @package deliciae_revamped
  */
 
 get_header(); ?>
 
-<section id="primary">
+<section id="primary" itemtype="http://schema.org/Blog" itemscope="itemscope" itemprop="mainContentOfPage" role="main">
 
-	<?php while ( have_posts() ) : the_post(); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php get_template_part( 'content', 'single' ); ?>
+			<?php get_template_part( 'content', 'single' ); ?>
 
-		<?php comments_template( '', true ); ?>
+			<?php the_post_navigation(); ?>
 
-	<?php endwhile; // end of the loop. ?>
+			<?php
+				// If comments are open or we have at least one comment, load up the comment template
+				if ( comments_open() || get_comments_number() ) :
+					comments_template();
+				endif;
+			?>
+
+		<?php endwhile; // end of the loop. ?>
 
 </section><!-- #primary -->
+
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

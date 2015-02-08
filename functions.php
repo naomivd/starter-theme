@@ -18,8 +18,8 @@ if ( ! isset( $content_width ) )
 /* THEME SETUP
  ========================== */
  
-if ( ! function_exists( 'themeFunction_setup' ) ):
-function themeFunction_setup() {
+if ( ! function_exists( 'starter_deliciae_setup' ) ):
+function starter_deliciae_setup() {
 
 	// Available for translation
 	load_theme_textdomain( 'starter_deliciae', get_template_directory() . '/languages' );
@@ -45,12 +45,12 @@ function themeFunction_setup() {
 	// add_image_size( 'name', 500, 300 );
 }
 endif;
-add_action( 'after_setup_theme', 'themeFunction_setup' );
+add_action( 'after_setup_theme', 'starter_deliciae_setup' );
 
 
 /* SIDEBARS & WIDGET AREAS
  ========================== */
-function themeFunction_widgets_init() {
+function starter_deliciae_widgets_init() {
 	register_sidebar( array(
 		'name' => __( 'Sidebar', 'starter_deliciae' ),
 		'id' => 'sidebar-1',
@@ -60,24 +60,88 @@ function themeFunction_widgets_init() {
 		'after_title' => '</h3>',
 	) );
 }
-add_action( 'widgets_init', 'themeFunction_widgets_init' );
+add_action( 'widgets_init', 'starter_deliciae_widgets_init' );
 
 
 /* ENQUEUE SCRIPTS
  ========================== */
-function themeFunction_scripts_method() {
+function starter_deliciae_scripts_method() {
 	// threaded comments
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 	// custom scripts
-//	wp_enqueue_script(
-//		'newscript',
-//		get_template_directory_uri() . '/js/newscript.js',
-//		array('jquery')
-//	);
+	wp_enqueue_script(
+		'deliciae-scripts',
+		get_template_directory_uri() . '/assets/scripts.js',
+		array('jquery')
+	);
+		wp_enqueue_script(
+		'deliciae-theme',
+		get_template_directory_uri() . '/assets/theme.js',
+		array('jquery')
+	);
 }    
-add_action('wp_enqueue_scripts', 'themeFunction_scripts_method');
+add_action('wp_enqueue_scripts', 'starter_deliciae_scripts_method');
+
+
+if ( ! function_exists( 'the_posts_navigation' ) ) :
+/**
+ * Display navigation to next/previous set of posts when applicable.
+ *
+ * @todo Remove this function when WordPress 4.3 is released.
+ */
+function the_posts_navigation() {
+	// Don't print empty markup if there's only one page.
+	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+		return;
+	}
+	?>
+	<nav class="navigation posts-navigation" role="navigation">
+		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'deliciae_revamped' ); ?></h2>
+		<div class="nav-links">
+
+			<?php if ( get_next_posts_link() ) : ?>
+			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'deliciae_revamped' ) ); ?></div>
+			<?php endif; ?>
+
+			<?php if ( get_previous_posts_link() ) : ?>
+			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'deliciae_revamped' ) ); ?></div>
+			<?php endif; ?>
+
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	<?php
+}
+endif;
+
+if ( ! function_exists( 'the_post_navigation' ) ) :
+/**
+ * Display navigation to next/previous post when applicable.
+ *
+ * @todo Remove this function when WordPress 4.3 is released.
+ */
+function the_post_navigation() {
+	// Don't print empty markup if there's nowhere to navigate.
+	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+	$next     = get_adjacent_post( false, '', false );
+
+	if ( ! $next && ! $previous ) {
+		return;
+	}
+	?>
+	<nav class="navigation post-navigation" role="navigation">
+		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'deliciae_revamped' ); ?></h2>
+		<div class="nav-links">
+			<?php
+				previous_post_link( '<div class="nav-previous">%link</div>', '%title' );
+				next_post_link( '<div class="nav-next">%link</div>', '%title' );
+			?>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	<?php
+}
+endif;
 
 
 /* MISC EXTRAS
@@ -100,7 +164,7 @@ show_admin_bar( false );
 //}
 
 // Add TinyMCE buttons that are disabled by default
-//function themeFunction_mce_buttons_2($buttons) {	
+//function starter_deliciae_mce_buttons_2($buttons) {	
 //	/**
 //	 * Add in a core button that's disabled by default
 //	 */
@@ -109,23 +173,23 @@ show_admin_bar( false );
 //
 //	return $buttons;
 //}
-//add_filter('mce_buttons_2', 'themeFunction_mce_buttons_2');
+//add_filter('mce_buttons_2', 'starter_deliciae_mce_buttons_2');
 
 
 // Remove all colors except those custom colors specified from TinyMCE
-//function themeFunction_change_mce_options( $init ) {
+//function starter_deliciae_change_mce_options( $init ) {
 //	$init['theme_advanced_text_colors'] = '8dc63f';
 //	$init['theme_advanced_more_colors'] = false;
 //return $init;
 //}
-//add_filter('tiny_mce_before_init', 'themeFunction_change_mce_options');
+//add_filter('tiny_mce_before_init', 'starter_deliciae_change_mce_options');
 
 
 // Modify the query on a given template (using conditionals)
-//function themeFunction_custom_query($query) {
+//function starter_deliciae_custom_query($query) {
 //    if ($query->is_search) {
 //        $query->set('post_type', 'post');
 //    }
 //    return $query;
 //}
-//add_filter('pre_get_posts','themeFunction_custom_query');
+//add_filter('pre_get_posts','starter_deliciae_custom_query');
