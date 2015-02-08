@@ -1,17 +1,19 @@
 <?php
 /**
- * Template Name: Full Width
+ * Template Name: Full Width Page
  *
- * This is a full width page template (no sidebar).
- *
- * @package Starter_Theme
+ * @package themeHandle
  */
 
 get_header(); ?>
 
 <section id="primary" class="full-width" role="main">
 
-   <!-- Everything in here is the same as the default template shown above -->
+	<?php while ( have_posts() ) : the_post(); ?>
+	
+		<?php get_template_part( 'content', 'page' ); ?>
+	
+	<?php endwhile; // end of the loop. ?>
 
 </section><!-- #primary -->
 

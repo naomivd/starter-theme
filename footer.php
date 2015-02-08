@@ -1,27 +1,24 @@
 <?php
 /**
- * The footer template
+ * The template for displaying the footer.
  *
- * Contains the closing of <div id="main"> and all content after.
+ * Contains the closing of the id=main div and all content after
  *
- * @package Starter_Theme
+ * @package themeHandle
  */
 ?>
 
-    </div><!-- #main -->
+	</div><!-- #main -->
 
 </div><!-- #page -->
-
 <footer id="colophon" role="contentinfo">
-	<div class="footer-menu">
-		<?php wp_nav_menu( array( 'theme_location' => 'footer' ) ); ?>
+	<div id="copyright">
+		&copy; <?php echo date('Y'); echo '&nbsp;'; echo bloginfo( 'name' ); ?><br>
+		Site by <a href="themeDesignerURI" target="_blank" rel="nofollow">themeDesigner</a> &amp; 
+		<a href="themeAuthorURI" target="_blank" rel="nofollow">themeAuthor</a>
 	</div>
-    <div id="copyright">
-        <!-- copyright goes here -->
-        &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?><br>
-    </div>
 </footer><!-- #colophon -->
 
-<?php wp_footer(); ?> 
+<?php wp_footer(); ?>
 </body>
 </html>
