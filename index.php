@@ -10,7 +10,7 @@
 
 get_header(); ?>
 
-<section id="primary" itemtype="http://schema.org/Blog" itemscope="itemscope" itemprop="mainContentOfPage" role="main">
+<section id="primary" class="content-area kolom-1-1 kolom-md-2-3" itemtype="http://schema.org/Blog" itemscope="itemscope" itemprop="mainContentOfPage" role="main">
 
 	<?php if ( have_posts() ) : ?>
 				
@@ -32,4 +32,5 @@ get_header(); ?>
 </section><!-- #primary -->
 
 <?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

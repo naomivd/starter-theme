@@ -8,15 +8,17 @@
  */
 
 
-/* OEMBED SIZING
- ========================== */
+/*--------------------------------------------------------------
+Embed Sizing
+--------------------------------------------------------------*/
  
 if ( ! isset( $content_width ) )
 	$content_width = 600;
 	
 	
-/* THEME SETUP
- ========================== */
+/*--------------------------------------------------------------
+Setup
+--------------------------------------------------------------*/
  
 if ( ! function_exists( 'starter_deliciae_setup' ) ):
 function starter_deliciae_setup() {
@@ -47,9 +49,9 @@ function starter_deliciae_setup() {
 endif;
 add_action( 'after_setup_theme', 'starter_deliciae_setup' );
 
-
-/* SIDEBARS & WIDGET AREAS
- ========================== */
+/*--------------------------------------------------------------
+Sidebar
+--------------------------------------------------------------*/
 function starter_deliciae_widgets_init() {
 	register_sidebar( array(
 		'name' => __( 'Sidebar', 'starter_deliciae' ),
@@ -63,16 +65,14 @@ function starter_deliciae_widgets_init() {
 add_action( 'widgets_init', 'starter_deliciae_widgets_init' );
 
 
-/* ENQUEUE SCRIPTS
- ========================== */
+/*--------------------------------------------------------------
+Scripts
+--------------------------------------------------------------*/
 function starter_deliciae_scripts_method() {
 	// threaded comments
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
-	wp_register_style('bootstrap', get_template_directory_uri() . '/assets/vendor/css/bootstrap.min.css' , array(), '', 'all' );
-	wp_enqueue_style( 'bootstrap' );
 
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
@@ -83,12 +83,30 @@ function starter_deliciae_scripts_method() {
 add_action('wp_enqueue_scripts', 'starter_deliciae_scripts_method');
 
 
+/*--------------------------------------------------------------
+Year Copyright in Footer
+--------------------------------------------------------------*/
+
+function deliciae_copyright() {
+global $wpdb;
+$copyright_dates = $wpdb->get_results("
+	SELECT YEAR(min(post_date_gmt)) AS firstdate, YEAR(max(post_date_gmt)) AS lastdate FROM
+	$wpdb->posts WHERE post_status = 'publish' ");
+$output = '';
+	if($copyright_dates) {
+		$copyright = "&copy; " . $copyright_dates[0]->firstdate;
+	if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+		$copyright .= '-' . $copyright_dates[0]->lastdate;
+	}
+	$output = $copyright;
+	}
+	return $output;
+}
+
 if ( ! function_exists( 'the_posts_navigation' ) ) :
-/**
- * Display navigation to next/previous set of posts when applicable.
- *
- * @todo Remove this function when WordPress 4.3 is released.
- */
+/*--------------------------------------------------------------
+Post Navigation Main Page
+--------------------------------------------------------------*/
 function the_posts_navigation() {
 	// Don't print empty markup if there's only one page.
 	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
@@ -114,11 +132,9 @@ function the_posts_navigation() {
 endif;
 
 if ( ! function_exists( 'the_post_navigation' ) ) :
-/**
- * Display navigation to next/previous post when applicable.
- *
- * @todo Remove this function when WordPress 4.3 is released.
- */
+/*--------------------------------------------------------------
+Post Navigation Single Page
+--------------------------------------------------------------*/
 function the_post_navigation() {
 	// Don't print empty markup if there's nowhere to navigate.
 	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
@@ -142,12 +158,12 @@ function the_post_navigation() {
 endif;
 
 
-/* MISC EXTRAS
- ========================== */
+/*--------------------------------------------------------------
+Extra's
+--------------------------------------------------------------*/
  
 // Comments & pingbacks display template
 include('inc/functions/comments.php');
-
 include('inc/nav-walker.php');
 
 // Remove admin bar for all users

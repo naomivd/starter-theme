@@ -12,10 +12,10 @@
 
 </div><!-- #page -->
 <footer id="colophon" itemtype="http://schema.org/WPFooter" itemscope="itemscope" role="contentinfo">
-	<div id="copyright">
-		&copy; <?php echo date('Y'); echo '&nbsp;'; echo bloginfo( 'name' ); ?><br>
-		Site by <a href="themeDesignerURI" target="_blank" rel="nofollow">themeDesigner</a> &amp; 
-		<a href="themeAuthorURI" target="_blank" rel="nofollow">themeAuthor</a>
+	<div class="container">
+		<div id="copyright text-center">
+			<?php echo deliciae_copyright(); ?> <?php bloginfo('name'); ?> / Designed with <i class="fa fa-heart color-accent"></i> and passion by <a href="http://deliciae.org" title="Deliciae.org" target=_blank>Deliciae.org</a>
+		</div>
 	</div>
 </footer><!-- #colophon -->
 

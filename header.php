@@ -36,7 +36,7 @@
 </head>
  
 <body <?php body_class(); ?>>
-<div id="page">
+<div id="page" class="container">
    <header id="site-header" itemtype="http://schema.org/WPHeader" itemscope="itemscope" role="banner">           
         <div class="site-branding text-center">
           <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
@@ -46,4 +46,5 @@
     </header><!-- #branding -->
    
    
-      <div id="main">
+      <div id="main" class="container">
+        <div class="kolommen">
