@@ -47,4 +47,4 @@
    
    
       <div id="main" class="container">
-        <div class="kolommen">
+        <div class="grid">
